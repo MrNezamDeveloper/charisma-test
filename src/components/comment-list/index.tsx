@@ -1,15 +1,17 @@
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import { List } from "@mui/material";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+
 import { addToList } from "../../store/actionCreators";
 import { ILists, MainListState } from "../../store/reducer.module";
 
-const ComentsList: React.FC<{}> = () => {
+const CommentsList: React.FC<{}> = () => {
   const dispatch = useDispatch();
 
   const [commentData, setCommentData] = useState<ILists[]>([]);
@@ -21,7 +23,8 @@ const ComentsList: React.FC<{}> = () => {
   );
 
   const addToMyList = (param: number) => {
-    const item: any = data.find((id: any) => id.id === param);
+    const item: any = data.find((id) => id.id === param);
+    console.log(item);
     dispatch(addToList(item));
   };
 
@@ -92,4 +95,4 @@ const ComentsList: React.FC<{}> = () => {
   );
 };
 
-export default ComentsList;
+export default CommentsList;

@@ -1,16 +1,5 @@
 import { ActionAdd, ActionDelete, ActionMain } from "./actionTypes";
-
-export interface ILists {
-  id?: number;
-  eamil?: string;
-  body?: string;
-  name?: string;
-}
-
-export interface MainListState {
-  myLists: ILists[];
-  mainLists: ILists[];
-}
+import {  MainListState } from "./reducer.module";
 
 const initialState = {
   mainLists: [],
@@ -18,9 +7,9 @@ const initialState = {
 };
 
 export const reducer = (
-  state: any = initialState,
+  state: MainListState = initialState,
   action: ActionMain | ActionAdd | ActionDelete,
-) => {
+):any => {
   switch (action.type) {
     case "MAIN_LIST":
       return { ...state, mainLists: action.payload };
@@ -31,7 +20,6 @@ export const reducer = (
       const indexT = myListsModelData.findIndex(
         (s) => s.id === action.payload.id,
       );
-      console.log(indexT);
       if (indexT > -1) {
         myListsModelData.splice(indexT, 1);
       }

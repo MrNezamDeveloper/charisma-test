@@ -26,7 +26,6 @@ const EmailsList: React.FC<{}> = () => {
 
   const handllesearch = (e: any) => {
     const valueChanged = e.target.value;
-    console.log(valueChanged);
     const searchedData: ILists[] = [...data];
     const newSearchData: any = searchedData.filter((data: any) =>
       data.email.toLowerCase().match(valueChanged),
